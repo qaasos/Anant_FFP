@@ -19,12 +19,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ASOS {
 
 	public static void main(String[] args) throws Exception  {
-		
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("disable-extensions");
 		options.addArguments("disable-infobars");
+		options.addArguments("incognito");
+		
+		WebDriver driver = new ChromeDriver(options);
+		
 		
 		WebDriverWait wait = new WebDriverWait(driver, 120);
 		
@@ -49,6 +51,9 @@ public class ASOS {
 		driver.findElement(By.xpath("//*[@id='woocommerce_price_filter-1']/form/div/div[2]/button")).click();
 		
 	//List <WebElement>	string1 = driver.findElements(By.xpath("//*[@id='noo-site']/div[2]/div[2]/div[1]/div/div/div/div[2]/span/ins/span"));
+	
+	
+
 		
 	//List <String> cost = new ArrayList<String>(); 	
 	
@@ -60,13 +65,13 @@ public class ASOS {
 		//}
 		//System.out.println(cost.);
 		
-		driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div[2]/div[1]/div/div[2]/div/h3/a")).click();
+		//driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div[2]/div[1]/div/div[2]/div/h3/a")).click();
 		
-		driver.findElement(By.xpath("//*[@id='product-2004']/div[1]/div[2]/form/button")).click();
+		//driver.findElement(By.xpath("//*[@id='product-2004']/div[1]/div[2]/form/button")).click();
 		
-		driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div/div/div[1]/a")).click();
+		//driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div/div/div[1]/a")).click();
 		
-		driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/div/a")).click();
+		//driver.findElement(By.xpath("//*[@id='noo-site']/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/div/a")).click();
 		
 		driver.findElement(By.id("billing_first_name")).sendKeys("Anant");
 		driver.findElement(By.id("billing_last_name")).sendKeys("Wankhade");
@@ -88,11 +93,13 @@ public class ASOS {
 		driver.findElement(By.id("ship-to-different-address-checkbox")).click();
 		
 		driver.findElement(By.xpath("//*[@id='order_comments']")).sendKeys("Please send order");
-		Thread.sleep(20000);
+		Thread.sleep(30000);
 		driver.findElement(By.xpath("//input[@id='payment_method_cod']")).click();
 		driver.findElement(By.xpath("//input[@id='terms']")).click();
 		driver.findElement(By.id("place_order")).click();
 		
+	
+	
 		
 		
 	}

@@ -14,18 +14,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.asos.utils.DriverUtils;
+
 
 
 public class ASOS {
 
 	public static void main(String[] args) throws Exception  {
-		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("disable-extensions");
-		options.addArguments("disable-infobars");
-		options.addArguments("incognito");
 		
-		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = null;
+		
+		DriverUtils DU = new  DriverUtils();
+		
+		driver = DU.getDriver("chrome");
 		
 		
 		WebDriverWait wait = new WebDriverWait(driver, 120);

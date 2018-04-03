@@ -1,8 +1,11 @@
 package com.asos.practice;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +17,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.asos.pom.Filter_PAge;
+import com.asos.pom.HomePage;
 import com.asos.utils.DriverUtils;
 
 
@@ -23,15 +28,29 @@ public class ASOS {
 	public static void main(String[] args) throws Exception  {
 		
 		WebDriver driver = null;
+		Properties Po= new Properties();
 		
 		DriverUtils DU = new  DriverUtils();
+		Po.load(new FileInputStream(new File(System.getProperty("user.dir") +"\\config\\config.properties")));
 		
-		driver = DU.getDriver("chrome");
+		driver = DU.getDriver(Po.getProperty("Browser"));
+		
+		HomePage HP = new HomePage(driver);
+		Filter_PAge FA =new Filter_PAge(driver);
+		HP.goToHomePageURL(Po.getProperty("URL"));
+		HP.HoverOnWomenAndClickOnJacket();
+		
+		FA.ClickOnFilterColor(Po.getProperty("JacketColor"));
+		FA.SortByNewNess("date");
+		
+		FA.FILTERBYPRICE();
+		FA.ClickOnMediumPriceJacket();
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver, 120);
 		
-		driver.get("http://Shop.demoqa.com");
+	/*	WebDriverWait wait = new WebDriverWait(driver, 120);
+		
+		// driver.get("http://Shop.demoqa.com");
 		driver.manage().window().maximize();
 		WebElement women = driver.findElement(By.xpath("//*[@id='menu-item-2213']/a"));
 		
@@ -100,7 +119,7 @@ public class ASOS {
 		driver.findElement(By.id("place_order")).click();
 		
 	
-	
+	*/
 		
 		
 	}

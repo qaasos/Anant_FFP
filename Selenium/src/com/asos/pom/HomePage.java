@@ -30,7 +30,7 @@ public class HomePage {
 	
 	public void HoverOnWomenAndClickOnJacket(){
 	
-		Actions action = new Actions(driver);
+		action = new Actions(driver);
 		action.moveToElement(driver.findElement(women)).build().perform();
 		driver.findElement(jacket).click();
 		

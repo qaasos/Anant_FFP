@@ -17,8 +17,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.asos.pom.CheckOutpage;
 import com.asos.pom.Filter_PAge;
 import com.asos.pom.HomePage;
+import com.asos.pom.JacketDetails;
 import com.asos.utils.DriverUtils;
 
 
@@ -37,6 +39,10 @@ public class ASOS {
 		
 		HomePage HP = new HomePage(driver);
 		Filter_PAge FA =new Filter_PAge(driver);
+		JacketDetails JD= new JacketDetails(driver);
+		CheckOutpage CP = new CheckOutpage(driver);
+				
+		
 		HP.goToHomePageURL(Po.getProperty("URL"));
 		HP.HoverOnWomenAndClickOnJacket();
 		
@@ -45,8 +51,10 @@ public class ASOS {
 		
 		FA.FILTERBYPRICE();
 		FA.ClickOnMediumPriceJacket();
-		
-		
+		JD.ClickonAddTocart();
+		JD.ClickOnViewCart();
+		JD.ClickOnProceedToCheckOut();
+		CP.EnterDetailsOnCheckOutPage();
 		
 	/*	WebDriverWait wait = new WebDriverWait(driver, 120);
 		
